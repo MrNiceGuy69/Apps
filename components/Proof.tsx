@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Testimonial } from '../types';
 
@@ -6,7 +5,7 @@ const testimonials: Testimonial[] = [
   {
     name: 'Sarah P.',
     business: 'Local Gym Owner',
-    image: 'https://picsum.photos/100/100?random=1',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&h=100&fit=crop&crop=faces',
     quote: "I was hesitant, but this was the best marketing decision I've ever made. The phone rang off the hook for a week straight. We signed up 32 new members.",
     result: '32 New Members in 1 Week',
     roi: 2500,
@@ -14,7 +13,7 @@ const testimonials: Testimonial[] = [
   {
     name: 'Mike R.',
     business: 'Plumbing Company',
-    image: 'https://picsum.photos/100/100?random=2',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&h=100&fit=crop&crop=faces',
     quote: "Forget Google Ads. One mailer brought in more high-quality jobs than our entire digital budget for the last quarter. The ROI is just insane.",
     result: '$15,000+ in New Jobs',
     roi: 3000,
@@ -22,7 +21,7 @@ const testimonials: Testimonial[] = [
   {
     name: 'Jessica L.',
     business: 'Boutique Salon',
-    image: 'https://picsum.photos/100/100?random=3',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&h=100&fit=crop&crop=faces',
     quote: "We were fully booked for two months solid after the mailer dropped. The exclusivity bonus was huge - we were the only salon featured!",
     result: 'Fully Booked for 2 Months',
     roi: 1800,

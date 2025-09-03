@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+
+import React, { useState } from 'react';
 import { Package } from '../types';
 
 interface SubmissionFormProps {
@@ -38,23 +39,19 @@ const TextAreaField: React.FC<{ label: string; name: string; placeholder?: strin
 
 const SubmissionForm: React.FC<SubmissionFormProps> = ({ selectedPackage, onSubmit, onBack }) => {
     const [adDesignChoice, setAdDesignChoice] = useState<'yes' | 'no' | null>(null);
-    const [isUpsellSelected, setIsUpsellSelected] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
         const formData = new FormData(e.currentTarget);
-        formData.append('totalPrice', totalPrice.toString());
+        formData.append('totalPrice', selectedPackage.price.toString());
         formData.append('selectedPackage', selectedPackage.title);
         await onSubmit(formData);
         // The alert in the parent will block, so no need to setIsSubmitting(false)
     };
 
-    const originalPrice = selectedPackage.price;
-    const upsellPrice = Math.round((originalPrice * 3) * 0.9);
-    const totalPrice = isUpsellSelected ? upsellPrice : originalPrice;
-    const savings = (originalPrice * 3) - upsellPrice;
+    const totalPrice = selectedPackage.price;
 
     return (
         <section className="py-20 bg-white">
@@ -70,24 +67,6 @@ const SubmissionForm: React.FC<SubmissionFormProps> = ({ selectedPackage, onSubm
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-10 bg-gray-50 p-8 rounded-lg shadow-lg">
-
-                    {/* Upsell Section */}
-                    <div className="bg-green-50 border-2 border-dashed border-green-400 p-6 rounded-lg">
-                        <h3 className="text-2xl font-bold text-green-800">Exclusive Offer: Lock In Your Results & Save!</h3>
-                        <p className="mt-2 text-green-700">Most of our clients see such great results they sign up for multiple mailings. Secure your spot for the next 3 months and get an instant 10% discount.</p>
-                        <label className="mt-4 flex items-center space-x-3 cursor-pointer p-4 bg-white rounded-md border border-gray-300 hover:border-green-500">
-                            <input
-                                type="checkbox"
-                                name="upsell"
-                                value="true"
-                                checked={isUpsellSelected}
-                                onChange={() => setIsUpsellSelected(!isUpsellSelected)}
-                                className="h-6 w-6 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                            />
-                            <span className="font-bold text-lg text-gray-800">YES! I want 3 months for <span className="text-green-600">${upsellPrice}</span> and save ${savings}!</span>
-                        </label>
-                    </div>
-
                     <fieldset className="space-y-6">
                         <legend className="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">Step 1: Your Contact Information</legend>
                         <InputField label="City for Marketing" name="city" placeholder="e.g., San Francisco" />
@@ -146,15 +125,9 @@ const SubmissionForm: React.FC<SubmissionFormProps> = ({ selectedPackage, onSubm
                             <h4 className="text-lg font-bold">Order Summary</h4>
                             <div className="mt-4 space-y-2">
                                 <div className="flex justify-between items-center">
-                                    <p className="text-gray-700">{selectedPackage.title} ({isUpsellSelected ? '3-Month Deal' : '1 Month'})</p>
-                                    <p className="font-bold text-gray-900">${isUpsellSelected ? originalPrice * 3 : originalPrice}</p>
+                                    <p className="text-gray-700">{selectedPackage.title}</p>
+                                    <p className="font-bold text-gray-900">${selectedPackage.price}</p>
                                 </div>
-                                {isUpsellSelected && (
-                                     <div className="flex justify-between items-center text-green-600">
-                                        <p>10% Discount</p>
-                                        <p className="font-bold">-${savings}</p>
-                                     </div>
-                                )}
                                 <div className="flex justify-between items-center border-t pt-4 mt-4">
                                     <p className="font-extrabold text-xl">Total Due Today</p>
                                     <p className="font-extrabold text-3xl text-gray-900">${totalPrice}</p>

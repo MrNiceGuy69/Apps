@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           <LogoIcon className="h-10 w-10" />
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tighter">
             Local Mail Billboard
-            <span className="block text-xs text-red-600 font-bold">10x ROI OR IT'S FREE</span>
+            <span className="block text-xs text-red-600 font-bold">Ads That Work!</span>
           </h1>
         </div>
         <ul className={`hidden lg:flex items-center space-x-8 font-semibold transition-all duration-300 ${isScrolled ? 'opacity-0 scale-90' : 'opacity-100 scale-100'}`}>
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
           <li><a href="#offer" onClick={(e) => { e.preventDefault(); scrollToSection('offer'); }} className="hover:text-red-600 transition-colors">The Offer</a></li>
           <li><a href="#proof" onClick={(e) => { e.preventDefault(); scrollToSection('proof'); }} className="hover:text-red-600 transition-colors">Real Proof</a></li>
         </ul>
-        <button onClick={() => scrollToSection('pricing')} className="bg-red-600 text-white px-6 py-3 text-lg font-bold rounded-lg shadow-lg hover:bg-red-700 transform hover:scale-105 transition-all duration-300 animate-pulse">
+        <button onClick={() => scrollToSection('pricing')} className="bg-red-500 text-white px-6 py-3 text-lg font-bold rounded-lg shadow-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300">
           Claim Your Spot
         </button>
       </nav>

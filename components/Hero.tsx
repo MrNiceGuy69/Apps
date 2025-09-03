@@ -7,21 +7,10 @@ const Hero: React.FC = () => {
     }
 
   return (
-    <section className="relative text-white py-20 md:py-32 overflow-hidden">
-        {/* Background Layer */}
-        <div className="absolute inset-0 z-0">
-            {/* The Image with filter */}
-            <div 
-                className="absolute inset-0 bg-cover bg-center filter grayscale"
-                style={{backgroundImage: "url('https://images.unsplash.com/photo-1615599793913-915470a11953?q=80&w=1974&auto=format&fit=crop')"}}
-            ></div>
-            {/* The Overlay */}
-            <div className="absolute inset-0 bg-black opacity-60"></div>
-        </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <section className="bg-gray-900 text-white py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-tight">
-          <span className="text-red-500">Tired of Wasting Money</span> on Ads That Don't Work?
+          Tired of <span className="text-red-500">Wasting Money</span> on Ads That<br/>Don't Work?
         </h1>
         <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-gray-300">
           This isn't another marketing gamble. It's a calculated investment in a system that floods local businesses with high-value customers. <span className="font-bold text-white">Stop guessing, start growing.</span>
